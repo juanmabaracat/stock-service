@@ -16,21 +16,20 @@ It was implemented only the POST and the GET endpoint because I had just a few h
 
 
 ## How to run the application:
-clone the repository and move to the project folder:
+Clone the repository and move to the project folder:
 ```
-$git clone https://github.com/juanmabaracat/stock-service.git
-$cd stock-service
+git clone https://github.com/juanmabaracat/stock-service.git
+cd stock-service
 ```
 Run the application:
 ```
-$go run cmd/main.go
+make run
 ```
 
 Run the tests:
 
 ```
-(From the project root)
-go test ./...
+make test
 ```
 
 ## Examples

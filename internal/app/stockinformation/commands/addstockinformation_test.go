@@ -10,34 +10,18 @@ import (
 )
 
 func TestNewAddStockInformationHandler(t *testing.T) {
-	type args struct {
-		uuidProvider id.Provider
-		repo         stockinformation.Repository
-	}
-	tests := []struct {
-		name string
-		args args
-		want AddStockHandler
-	}{
-		{
-			name: "should create a AddStockHandler",
-			args: args{
-				uuidProvider: id.MockProvider{},
-				repo:         stockinformation.MockRepository{},
-			},
-			want: addStockHandler{
-				uuidProvider: id.MockProvider{},
-				repository:   stockinformation.MockRepository{},
-			},
-		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := NewAddStockHandler(tt.args.uuidProvider, tt.args.repo); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("NewAddStockHandler() = %v, want %v", got, tt.want)
-			}
-		})
-	}
+	t.Run("should create AddStockInformationHandler successfully", func(t *testing.T) {
+		expected := addStockHandler{
+			uuidProvider: id.MockProvider{},
+			repository:   stockinformation.MockRepository{},
+		}
+
+		got := NewAddStockHandler(id.MockProvider{}, stockinformation.MockRepository{})
+
+		if !reflect.DeepEqual(got, expected) {
+			t.Errorf("NewAddStockHandler() = %v, want %v", got, expected)
+		}
+	})
 }
 
 func Test_addStockInformationHandler_Handle(t *testing.T) {
